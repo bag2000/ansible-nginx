@@ -1,0 +1,9 @@
+---
+- name: Register curl nginx
+  ansible.builtin.shell:
+    cmd: curl -Is localhost:80 | head -n 1
+  register: reg
+- name: Fail if not 200 OK
+  ansible.builtin.debug:
+    msg: '{{ reg.stdout }}'
+  failed_when: "'200 OK' not in reg.stdout"
