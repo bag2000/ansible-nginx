@@ -1,0 +1,31 @@
+pipeline {
+    agent {
+        label 'ubuntu-20.04'
+    }
+    
+    stages {
+        stage("Git") {
+            steps {
+                git branch: 'main', credentialsId: 'fd76c57f-03dd-4565-bbeb-70dcf2279934', url: 'git@github.com:bag2000/ansible-nginx.git'
+            }
+        }
+        
+        stage('Docker image') {
+            steps {
+                sh 'sudo docker build -t ubuntu-python:22.04 ./files'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'sudo molecule test -s nginx'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }    
+}
