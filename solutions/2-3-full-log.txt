@@ -1,0 +1,237 @@
+Started by user Роман
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on ubuntu-20.04 in /home/adm2/jankins_agent/workspace/Molecule_pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential fd76c57f-03dd-4565-bbeb-70dcf2279934
+Fetching changes from the remote Git repository
+ > git rev-parse --resolve-git-dir /home/adm2/jankins_agent/workspace/Molecule_pipeline/.git # timeout=10
+ > git config remote.origin.url git@github.com:bag2000/ansible-nginx.git # timeout=10
+Fetching upstream changes from git@github.com:bag2000/ansible-nginx.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+using GIT_SSH to set credentials 
+Verifying host key using known hosts file
+ > git fetch --tags --force --progress -- git@github.com:bag2000/ansible-nginx.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 9608cfe4704cb69b1dbe11e2c198509889c2ecc9 (refs/remotes/origin/main)
+Commit message: "Add site"
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9608cfe4704cb69b1dbe11e2c198509889c2ecc9 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 9608cfe4704cb69b1dbe11e2c198509889c2ecc9 # timeout=10
+ > git rev-list --no-walk 476b4fde35c7d93f81404d72c3b0dea3246a152b # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker image)
+[Pipeline] sh
++ sudo docker build -t ubuntu-python:22.04 ./files
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 110B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/ubuntu:latest
+#4 DONE 0.0s
+
+#5 [2/2] RUN apt-get update ;     apt-get install -y python3
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers done
+#6 writing image sha256:1dd601c652c0fa6671d5995b9badee200fc8d6575049cb7db2e9286cf7817815 done
+#6 naming to docker.io/library/ubuntu-python:22.04 done
+#6 DONE 0.0s
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
++ sudo molecule test -s nginx
+INFO     nginx scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Set ANSIBLE_LIBRARY=/root/.cache/ansible-compat/891c1c/modules:/root/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/root/.cache/ansible-compat/891c1c/collections:/root/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/root/.cache/ansible-compat/891c1c/roles:roles:/root/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Running nginx > dependency
+WARNING  Skipping, dependency is disabled.
+WARNING  Skipping, dependency is disabled.
+INFO     Running nginx > lint
+INFO     Lint is disabled.
+INFO     Running nginx > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running nginx > destroy
+INFO     Sanity checks: 'docker'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=instance)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+ok: [localhost] => (item=instance)
+
+TASK [Delete docker networks(s)] ***********************************************
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running nginx > syntax
+
+playbook: /home/adm2/jankins_agent/workspace/Molecule_pipeline/molecule/nginx/converge.yml
+INFO     Running nginx > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Log into a Docker registry] **********************************************
+skipping: [localhost] => (item=None)
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item={'image': 'ubuntu-python:22.04', 'name': 'instance', 'pre_build_image': True})
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item={'image': 'ubuntu-python:22.04', 'name': 'instance', 'pre_build_image': True})
+
+TASK [Synchronization the context] *********************************************
+skipping: [localhost] => (item={'image': 'ubuntu-python:22.04', 'name': 'instance', 'pre_build_image': True})
+
+TASK [Discover local Docker images] ********************************************
+ok: [localhost] => (item={'changed': False, 'skipped': True, 'skip_reason': 'Conditional result was False', 'item': {'image': 'ubuntu-python:22.04', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item', 'i': 0, 'ansible_index_var': 'i'})
+
+TASK [Build an Ansible compatible image (new)] *********************************
+skipping: [localhost] => (item=molecule_local/ubuntu-python:22.04)
+
+TASK [Create docker network(s)] ************************************************
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item={'image': 'ubuntu-python:22.04', 'name': 'instance', 'pre_build_image': True})
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=instance)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': '940624482740.166202', 'results_file': '/root/.ansible_async/940624482740.166202', 'changed': True, 'item': {'image': 'ubuntu-python:22.04', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+INFO     Running nginx > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running nginx > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [instance]
+
+TASK [Include nginx] ***********************************************************
+
+TASK [nginx : Install nginx] ***************************************************
+changed: [instance]
+
+TASK [nginx : Start and enable nginx] ******************************************
+changed: [instance]
+
+PLAY RECAP *********************************************************************
+instance                   : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running nginx > idempotence
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [instance]
+
+TASK [Include nginx] ***********************************************************
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [instance]
+
+TASK [nginx : Start and enable nginx] ******************************************
+ok: [instance]
+
+PLAY RECAP *********************************************************************
+instance                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running nginx > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running nginx > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [instance]
+
+TASK [Include test_alpha-services] *********************************************
+
+TASK [test_nginx : Register curl nginx] ****************************************
+changed: [instance]
+
+TASK [test_nginx : Fail if not 200 OK] *****************************************
+ok: [instance] => {
+    "msg": "HTTP/1.1 200 OK"
+}
+
+PLAY RECAP *********************************************************************
+instance                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running nginx > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running nginx > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=instance)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+changed: [localhost] => (item=instance)
+
+TASK [Delete docker networks(s)] ***********************************************
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] echo
+Deploying....
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
