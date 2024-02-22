@@ -19,8 +19,8 @@
 **Ответ 2**  
 [Полный лог задание 2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-3-full-log.txt)  
 ![img2-1](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-1.png)  
-![img2-2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-1.png)  
-![img2-3](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-1.png)  
+![img2-2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-2.png)  
+![img2-3](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-3.png)  
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.  
 **Ответ 3**  
 [Jenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/Jenkinsfile)  
