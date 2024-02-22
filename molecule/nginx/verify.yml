@@ -3,6 +3,6 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: "Include test_alpha-services"
+    - name: "Include test_nginx"
       include_role:
         name: "test_nginx"
