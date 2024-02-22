@@ -9,7 +9,11 @@
 
 ## Основная часть
 
-1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
+1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.  
+![img1-1](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-1.png)  
+![img1-2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-2.png)  
+![img1-3](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-3.png)  
+[full_log_1](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-3-full-log.txt)  
 2. Сделать Declarative Pipeline Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
