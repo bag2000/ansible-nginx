@@ -36,7 +36,7 @@
 [ScriptedJenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/ScriptedJenkinsfile) 
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.  
 **Ответ 8**  
-[Роль](https://github.com/bag2000/ansible-nginx/tree/main)  
+[Роль](https://github.com/bag2000/ansible-nginx)  
 [Declarative Pipeline](https://github.com/bag2000/ansible-nginx/blob/main/files/Jenkinsfile)  
 [ScriptedJenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/ScriptedJenkinsfile)  
 9. Сопроводите процесс настройки скриншотами для каждого пункта задания!!
