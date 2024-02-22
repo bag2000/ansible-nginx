@@ -15,7 +15,7 @@
 ![img1-1](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-1.png)  
 ![img1-2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-2.png)  
 ![img1-3](https://github.com/bag2000/ansible-nginx/blob/main/solutions/1-3.png)  
-2. Сделать Declarative Pipeline Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
+2. Сделать Declarative Pipeline Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.  
 **Ответ 2**  
 [Полный лог задание 2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-3-full-log.txt)  
 ![img2-1](https://github.com/bag2000/ansible-nginx/blob/main/solutions/2-1.png)  
