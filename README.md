@@ -31,12 +31,12 @@
 ![img4-2](https://github.com/bag2000/ansible-nginx/blob/main/solutions/4-2.png)  
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True). По умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.
-7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
+7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.  
 **Ответ 7**  
 [ScriptedJenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/ScriptedJenkinsfile) 
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.  
 **Ответ 8**  
-[Роль](https://github.com/bag2000/ansible-nginx/tree/main/roles)  
+[Роль](https://github.com/bag2000/ansible-nginx/tree/main)  
 [Declarative Pipeline](https://github.com/bag2000/ansible-nginx/blob/main/files/Jenkinsfile)  
-[ScriptedJenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/ScriptedJenkinsfile) 
+[ScriptedJenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/ScriptedJenkinsfile)  
 9. Сопроводите процесс настройки скриншотами для каждого пункта задания!!
