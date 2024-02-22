@@ -34,7 +34,7 @@
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
 **Ответ 7**  
 [ScriptedJenkinsfile](https://github.com/bag2000/ansible-nginx/blob/main/files/ScriptedJenkinsfile) 
-8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
+8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.  
 **Ответ 8**  
 [Роль](https://github.com/bag2000/ansible-nginx/tree/main/roles)  
 [Declarative Pipeline](https://github.com/bag2000/ansible-nginx/blob/main/files/Jenkinsfile)  
