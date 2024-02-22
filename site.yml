@@ -1,0 +1,9 @@
+---
+  - name: Ping
+    hosts: all
+    become: true
+    tasks:
+      - name: Ping
+        ansible.builtin.package:
+          name: apache2
+          state: present
