@@ -1,0 +1,17 @@
+node("ubuntu-20.04"){
+    stage("Git checkout"){
+        git branch: 'main', credentialsId: 'fd76c57f-03dd-4565-bbeb-70dcf2279934', url: 'git@github.com:bag2000/ansible-nginx.git'
+    }
+    stage("Prod check"){
+        prod_run=false
+    }
+    stage("Run playbook"){
+        if (prod_run){
+            sh 'ansible-playbook site.yml -i inventory/prod.yml'
+        }
+        else{
+            sh 'ansible-playbook --check --diff site.yml -i inventory/prod.yml'
+        }
+        
+    }
+}
